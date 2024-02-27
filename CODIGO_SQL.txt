@@ -1,0 +1,127 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-02-2024 a las 12:23:32
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `cosas`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nombres`
+--
+
+CREATE TABLE `nombres` (
+  `id_empleado` int(20) NOT NULL,
+  `nombre_empleado` varchar(20) NOT NULL,
+  `edad_empleado` varchar(20) NOT NULL,
+  `telefono_empleado` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `nombres`
+--
+
+INSERT INTO `nombres` (`id_empleado`, `nombre_empleado`, `edad_empleado`, `telefono_empleado`) VALUES
+(1, 'Alicia', '24', 12345678),
+(2, 'Sara', '20', 4567899),
+(3, 'Sagrario', '45', 983749879);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `numero`
+--
+
+CREATE TABLE `numero` (
+  `id_venta` int(11) NOT NULL,
+  `id_empleado` int(20) NOT NULL,
+  `nombre_producto` varchar(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `precio_producto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `numero`
+--
+
+INSERT INTO `numero` (`id_venta`, `id_empleado`, `nombre_producto`, `id_producto`, `precio_producto`) VALUES
+(1, 1, 'chocolate', 3, 1),
+(2, 1, 'espaguetis', 4, 3),
+(3, 2, 'Macarrones', 78, 2),
+(4, 2, 'chocolate', 3, 1),
+(5, 3, 'espaguetis', 4, 3),
+(6, 3, 'Macarrones', 78, 2),
+(7, 1, 'Hamburguesa', 201, 10),
+(8, 2, 'Pizza', 202, 15),
+(9, 3, 'Sushi', 203, 20),
+(10, 1, 'Hot Dog', 204, 8),
+(11, 2, 'Ensalada', 205, 12),
+(12, 3, 'Tacos', 206, 18),
+(13, 1, 'Hamburguesa', 207, 11),
+(14, 2, 'Pizza', 208, 16),
+(15, 3, 'Sushi', 209, 22);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `nombres`
+--
+ALTER TABLE `nombres`
+  ADD PRIMARY KEY (`id_empleado`);
+
+--
+-- Indices de la tabla `numero`
+--
+ALTER TABLE `numero`
+  ADD PRIMARY KEY (`id_venta`),
+  ADD KEY `id_empleado` (`id_empleado`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `nombres`
+--
+ALTER TABLE `nombres`
+  MODIFY `id_empleado` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `numero`
+--
+ALTER TABLE `numero`
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `numero`
+--
+ALTER TABLE `numero`
+  ADD CONSTRAINT `numero_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `nombres` (`id_empleado`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

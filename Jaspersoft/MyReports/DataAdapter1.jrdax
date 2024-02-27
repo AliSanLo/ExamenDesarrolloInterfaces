@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl">
+  <name>Prueba</name>
+  <classpath>C:\Users\Alicia\Desktop\mysql-connector-j-8.3.0\mysql-connector-j-8.3.0.jar</classpath>
+  <driver>org.hsqldb.jdbcDriver</driver>
+  <username>root</username>
+  <password>1234</password>
+  <url>jdbc:hsqldb:[PATH_TO_DB_FILES]/database</url>
+  <database></database>
+  <savePassword>true</savePassword>
+  <serverAddress></serverAddress>
+</jdbcDataAdapter>
